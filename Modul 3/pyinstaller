@@ -1,0 +1,30 @@
+pyinstaller --onefile NamaScriptPython.py
+
+
+Berkas myscript.spec berisi sebagian besar informasi yang disediakan oleh opsi yang ditentukan ketika pyinstaller (atau pyi-makespec) dijalankan dengan skrip sebagai argumen. Biasanya, Anda tidak perlu menentukan opsi apa pun saat menjalankan pyinstaller dengan berkas spesifikasi. Hanya beberapa opsi baris perintah yang berpengaruh saat mengompilasi dari berkas spesifikasi.
+
+-D, --onedir
+Buat paket dari satu folder yang berisi satu berkas eksekusi (default)
+
+-F, --onefile
+Buat satu berkas eksekusi dari satu berkas.
+
+--specpath DIR
+Folder untuk menyimpan berkas spesifikasi yang dihasilkan (default: direktori saat ini)
+
+-n NAMA, --nama NAMA
+Nama yang akan diberikan kepada aplikasi yang terintegrasi dan berkas spesifikasi (default: nama dasar dari skrip pertama)
+
+
+Opsi ini memerlukan nama paket yang ingin Anda masukkan ke dalam berkas eksekusi Anda. Sebagai contoh, jika proyek Anda mengimpor pustaka requests di dalam sebuah fungsi, PyInstaller tidak akan secara otomatis menyertakan requests dalam berkas eksekusi Anda. Anda dapat menggunakan perintah berikut untuk memaksa inklusi requests:
+
+$ pyinstaller cli.py --hiddenimport=requests
+
+
+--exclude-module
+
+Keluarkan beberapa modul dari yang akan disertakan dengan berkas eksekusi Anda
+
+$ pyinstaller cli.py --exclude-module=pytest
+
+Seperti yang disebutkan sebelumnya, Anda dapat menggunakan kembali berkas .spec yang dihasilkan secara otomatis untuk menyesuaikan lebih lanjut berkas eksekusi Anda. Berkas .spec adalah skrip Python reguler yang secara implisit menggunakan API dari pustaka PyInstaller.
